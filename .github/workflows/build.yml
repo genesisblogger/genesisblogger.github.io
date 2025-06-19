@@ -1,4 +1,4 @@
-name: Build Static Site
+name: Build
 
 on:
   push:
@@ -8,25 +8,15 @@ on:
 
 jobs:
   build:
-    name: Generate index.html
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        
-
-      - name: Install Python dependencies
-        run: pip install beautifulsoup4
-
-      - name: Run build.py
-        run: python build.py
-
-      - name: Upload output folder (untuk dicek hasilnya)
-        uses: actions/upload-artifact@v3
+      - uses: actions/setup-python@v4
         with:
-          name: hasil-output
-          path: output/
+          python-version: '3.11'
+
+      - run: pip install beautifulsoup4
+
+      - run: python build.py
