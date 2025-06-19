@@ -3,15 +3,25 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 from math import ceil
 
-# Konstanta
+# --- KONSTANTA BARU ---
+# Kita tidak akan menggunakan OUTPUT_FOLDER lagi secara eksplisit untuk output di root.
+# Namun, kita tetap butuh CERITA_FOLDER dan KATEGORI_FOLDER
 CERITA_FOLDER = "cerita"
 KATEGORI_FOLDER = "kategori"
-OUTPUT_FOLDER = "output"
+# Tidak perlu OUTPUT_FOLDER jika ingin di root.
+# ARTIKEL_PER_PAGE tetap sama
 ARTIKEL_PER_PAGE = 7
 
-# Buat folder output
-os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-os.makedirs(os.path.join(OUTPUT_FOLDER, KATEGORI_FOLDER), exist_ok=True)
+# --- Perbaikan: Tidak membuat folder 'output' di root jika semua file tujuan ada di root ---
+# Jika Anda tetap ingin folder 'kategori' di root, kita buat langsung.
+# Jika Anda ingin folder 'kategori' tetap di dalam 'output' (tapi 'output' tidak ada),
+# maka KATEGORI_FOLDER harus diubah menjadi path relatif, atau kita buat struktur yang lebih rata.
+
+# Mari kita asumsikan Anda ingin index.html di root, dan folder "kategori" juga di root.
+# Jadi, kita hanya perlu membuat folder "kategori" jika belum ada.
+os.makedirs(KATEGORI_FOLDER, exist_ok=True) # Ini akan membuat folder 'kategori' langsung di root
+
+# --- Fungsi lainnya tidak berubah kecuali bagian path file ---
 
 # Baca semua cerita dan parsing metadata
 def parse_cerita():
@@ -35,7 +45,7 @@ def parse_cerita():
                 })
     return sorted(daftar_cerita, key=lambda x: x['updated'], reverse=True)
 
-# Template artikel + related post
+# Template artikel + related post (Tidak Berubah)
 def render_related_posts(all_posts, current_post, limit=3):
     related = [p for p in all_posts if p['category'] == current_post['category'] and p['url'] != current_post['url']]
     related = related[:limit]
@@ -47,10 +57,13 @@ def render_related_posts(all_posts, current_post, limit=3):
     html += '</ul></div>\n'
     return html
 
-# Render daftar artikel
+# Render daftar artikel (Tidak Berubah, karena link relatif sudah OK)
 def render_articles(articles, all_articles, is_index=True):
     html = '<div class="artikel-terbaru">Cerita Terbaru</div>\n'
     for art in articles:
+        # Link kategori sekarang relatif ke root jika is_index=True (misal index.html)
+        # Jika is_index=False (misal kategori.html di folder kategori), maka relatif ke folder kategori itu sendiri
+        # Ini sudah benar dengan KATEGORI_FOLDER sebagai folder di root.
         kategori_link = f"{KATEGORI_FOLDER}/{art['category']}.html" if is_index else f"{art['category']}.html"
         html += f'''
 <div class="kosong"></div>
@@ -70,12 +83,13 @@ def render_articles(articles, all_articles, is_index=True):
         html += render_related_posts(all_articles, art)
     return html
 
-# Pagination
+# Pagination (Sedikit Penyesuaian Path File)
 def render_pagination(base_name, total_pages, current_page, subfolder=""):
     nav = '<div class="pagination">'
     for i in range(1, total_pages + 1):
         filename = f"{base_name}_page{i}.html" if i > 1 else f"{base_name}.html"
         if subfolder:
+            # Jika ada subfolder (misal 'kategori'), tambahkan subfolder di depannya
             filename = f"{subfolder}/{filename}"
         label = f"[{i}]"
         if i == current_page:
@@ -85,7 +99,7 @@ def render_pagination(base_name, total_pages, current_page, subfolder=""):
     nav += '</div>'
     return nav
 
-# Gabungkan header, head, footer
+# Gabungkan header, head, footer (Tidak Berubah)
 def wrap_full_page(body_content, title="Cerita", custom_head_path="custom/custom_head.html"):
     with open("custom/custom_header.html", "r", encoding="utf-8") as f:
         header = f.read()
@@ -107,7 +121,7 @@ def wrap_full_page(body_content, title="Cerita", custom_head_path="custom/custom
 </body>
 </html>"""
 
-# Bangun index.html
+# Bangun index.html (Perbaikan Lokasi Penulisan File)
 def build_index(cerita_list):
     total = len(cerita_list)
     total_pages = ceil(total / ARTIKEL_PER_PAGE)
@@ -119,10 +133,12 @@ def build_index(cerita_list):
         content += render_pagination("index", total_pages, i+1)
         final_html = wrap_full_page(content, title="Index")
         filename = "index.html" if i == 0 else f"index_page{i+1}.html"
-        with open(os.path.join(OUTPUT_FOLDER, filename), "w", encoding="utf-8") as f:
+        # --- PERBAIKAN UTAMA DI SINI: Jangan gunakan OUTPUT_FOLDER ---
+        # Langsung tulis ke filename di root
+        with open(filename, "w", encoding="utf-8") as f:
             f.write(final_html)
 
-# Bangun kategori/*.html
+# Bangun kategori/*.html (Perbaikan Lokasi Penulisan File)
 def build_kategori(cerita_list):
     kategori_map = defaultdict(list)
     for c in cerita_list:
@@ -135,10 +151,11 @@ def build_kategori(cerita_list):
             end = start + ARTIKEL_PER_PAGE
             halaman = items[start:end]
             content = render_articles(halaman, items, is_index=False)
-            content += render_pagination(kategori, total_pages, i+1)
+            content += render_pagination(kategori, total_pages, i+1, subfolder=KATEGORI_FOLDER) # Tambahkan subfolder untuk pagination link
             final_html = wrap_full_page(content, title=f"Kategori: {kategori}")
             filename = f"{kategori}.html" if i == 0 else f"{kategori}_page{i+1}.html"
-            out_path = os.path.join(OUTPUT_FOLDER, KATEGORI_FOLDER, filename)
+            # --- PERBAIKAN UTAMA DI SINI: Tulis ke KATEGORI_FOLDER (yang ada di root) ---
+            out_path = os.path.join(KATEGORI_FOLDER, filename)
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(final_html)
 
@@ -147,4 +164,5 @@ if __name__ == "__main__":
     cerita = parse_cerita()
     build_index(cerita)
     build_kategori(cerita)
-    print("Situs berhasil dibangun di folder 'output/'")
+    # Ubah pesan output
+    print("Situs berhasil dibangun. File index.html dan folder 'kategori/' berada di root.")
