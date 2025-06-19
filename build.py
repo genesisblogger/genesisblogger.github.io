@@ -4,7 +4,7 @@ from collections import defaultdict
 from math import ceil
 
 # Konstanta
-CERITA_FOLDER = "cerita"
+CERITA_FOLDER = "baca"
 KATEGORI_FOLDER = "kategori"
 OUTPUT_FOLDER = "output"
 ARTIKEL_PER_PAGE = 7
@@ -14,8 +14,8 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 os.makedirs(os.path.join(OUTPUT_FOLDER, KATEGORI_FOLDER), exist_ok=True)
 
 # Baca semua cerita dan parsing metadata
-def parse_cerita():
-    daftar_cerita = []
+def parse_baca():
+    daftar_baca = []
     for filename in os.listdir(CERITA_FOLDER):
         if filename.endswith(".html"):
             filepath = os.path.join(CERITA_FOLDER, filename)
