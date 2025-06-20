@@ -210,6 +210,7 @@ h6 {
 	word-wrap: break-word;
  background: #fff;
  max-width: 768px;
+ width: 100%;
  margin: 0 auto;
 }
 
@@ -281,7 +282,7 @@ h6 {
 .site-header {
 	background-color: #fff;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-	padding: 0 30px;
+	padding: 0 15px;
 }
 
 /* Title Area
@@ -723,4 +724,11 @@ table tr{padding:2px;margin:0;}
 table td{font-size:1em;padding:2px 3px;margin:0;} 
 table td img{width:104px; height:90px;margin:0;padding:0;} 
 .pass{width:118px;padding:0;margin:0;} 
+
+@media (max-width: 768px) {
+  .genesis-responsive-menu {
+    display: none;
+  }
+}
+br {margin: 4px 0;}
 
