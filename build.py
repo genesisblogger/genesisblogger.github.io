@@ -90,7 +90,7 @@ def render_articles(articles, all_articles, is_index=True):
 </td>
 <td valign="top">
 <a href="{art['url']}"><strong>{art['title']}</strong></a>
-<br/><br/>{art['updated']}<br/><br/>
+<br/><br/>{art['updated']}<br/>
 <a href="{kategori_link}">{art['category']}</a>
 </td></tr></tbody></table></div>
 '''
@@ -125,6 +125,14 @@ def wrap_full_page(body_content, title="Cerita", custom_head_path="custom/custom
     """
     Menggabungkan header, head, body content, dan footer menjadi halaman HTML lengkap.
     """
+    # Pastikan file custom ada
+    if not os.path.exists("custom/custom_header.html"):
+        raise FileNotFoundError("File custom/custom_header.html tidak ditemukan.")
+    if not os.path.exists("custom/custom_footer.html"):
+        raise FileNotFoundError("File custom/custom_footer.html tidak ditemukan.")
+    if not os.path.exists(custom_head_path):
+        raise FileNotFoundError(f"File {custom_head_path} tidak ditemukan.")
+
     with open("custom/custom_header.html", "r", encoding="utf-8") as f:
         header = f.read()
     with open("custom/custom_footer.html", "r", encoding="utf-8") as f:
@@ -132,16 +140,17 @@ def wrap_full_page(body_content, title="Cerita", custom_head_path="custom/custom
     with open(custom_head_path, "r", encoding="utf-8") as f:
         head = f.read()
     return f"""<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
+<html lang="id">
+<head itemscope itemtype="https://schema.org/WebSite">
   <title>{title}</title>
 {head}
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
+<div class="site-container">
 {header}
 {body_content}
 {footer}
+</div>
 </body>
 </html>"""
 
@@ -157,7 +166,7 @@ def build_index(cerita_list):
         halaman = cerita_list[start:end]
         content = render_articles(halaman, cerita_list, is_index=True)
         content += render_pagination("index", total_pages, i+1)
-        final_html = wrap_full_page(content, title="Index")
+        final_html = wrap_full_page(content, title="Index Cerita")
         filename = "index.html" if i == 0 else f"index_page{i+1}.html"
         # Tulis file langsung ke root
         with open(filename, "w", encoding="utf-8") as f:
@@ -186,9 +195,50 @@ def build_kategori(cerita_list):
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(final_html)
 
+def build_individual_story_pages(cerita_list):
+    """
+    Membungkus setiap file HTML di folder 'cerita' dengan header, head, dan footer kustom.
+    """
+    print(f"Membungkus {len(cerita_list)} file cerita di folder '{CERITA_FOLDER}' dengan custom HTML...")
+    for story_meta in cerita_list:
+        # Dapatkan nama file dari URL cerita
+        filename = os.path.basename(story_meta['url'])
+        filepath = os.path.join(CERITA_FOLDER, filename)
+
+        if not os.path.exists(filepath):
+            print(f"Peringatan: File {filepath} tidak ditemukan, melompati.")
+            continue
+
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                original_soup = BeautifulSoup(f, "html.parser")
+
+            # Ambil semua konten yang ada di dalam tag body dari file asli
+            # Jika tidak ada tag body, ambil semua konten
+            body_content_tag = original_soup.find('body')
+            if body_content_tag:
+                # Menggunakan .decode_contents() untuk mendapatkan konten di dalam body
+                # tanpa tag body itu sendiri
+                article_body_content = "".join(str(item) for item in body_content_tag.contents)
+            else:
+                # Jika tidak ada tag body, asumsikan seluruh konten adalah body
+                article_body_content = str(original_soup)
+
+            # Bungkus konten body dengan header, head, dan footer
+            final_html = wrap_full_page(article_body_content, title=story_meta['title'])
+
+            # Timpa file asli di folder 'cerita'
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(final_html)
+            print(f"Berhasil membungkus: {filepath}")
+
+        except Exception as e:
+            print(f"Error memproses {filepath}: {e}")
+
 # --- EKSEKUSI UTAMA ---
 if __name__ == "__main__":
     cerita = parse_cerita()
     build_index(cerita)
     build_kategori(cerita)
-    print("Situs berhasil dibangun. File index.html dan folder 'kategori/' berada di root.")
+    build_individual_story_pages(cerita) # Panggil fungsi baru di sini
+    print("\nSitus berhasil dibangun. File index.html, folder 'kategori/', dan file di 'cerita/' telah diperbarui/dibuat.")
