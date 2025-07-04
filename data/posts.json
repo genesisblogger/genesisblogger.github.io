@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Judul Artikel Sangat Keren",
+    "content": "<body>\n<h1>Judul Artikel Sangat Keren</h1>\n<div class=\"post-labels\">\n<a href=\"#\">Kategori 1</a>\n<a href=\"#\">Berita Terbaru</a>\n</div>\n<p>Ini adalah isi artikel saya yang panjang dan lebar. Di sini saya bisa tambahkan gambar.</p>\n<img alt=\"Gambar Artikel\" src=\"https://example.com/gambar-keren.jpg\"/>\n<p>Lanjut paragraf kedua...</p>\n</body>",
+    "labels": [
+      "Kategori 1",
+      "Berita Terbaru"
+    ],
+    "id": "judul-artikel-sangat-keren",
+    "original_upload_filename": "contoh-artikel.html"
+  }
+]
