@@ -3,29 +3,42 @@ layout: default
 ---
 
 <h2>{{ page.title }}</h2>
-
+<div class="blog-section">
+  <div class="posts-wrapper">
+    
 {% for post in site.posts %}
-<article class="post-preview">
+
+ <article class="post-container">
+      <div class="post-content">
+        
 
   {% assign img_src = post.content | split: '<img' | last | split: 'src="' | last | split: '"' | first %}
   {% if img_src contains 'http' %}
-    <a href="{{ post.url }}">
+    <div class="post-thumbnail"><a href="{{ post.url }}">
       <img src="{{ img_src }}" alt="{{ post.title }}" class="thumbnail">
-    </a>
+    </a></div>
   {% endif %}
 
+        
+         <div class="post-meta-top">
+          <div class="post-meta-label">
+            {% for cat in post.categories %}
+            <span class="label-name"><a href="/kategori/{{ cat | downcase }}/">{{ cat }}</a></span>
+            {% endfor %}
+          </div>
+        </div>
+        
   <h2 class="post-title">
     <a href="{{ post.url }}">{{ post.title }}</a>
   </h2>
-
-  <div class="post-meta">
-    <span>{{ post.date | date: "%d %B %Y" }}</span>
-    {% for cat in post.categories %}
-      <a href="/kategori/{{ cat | downcase }}/" class="post-category">{{ cat }}</a>
-    {% endfor %}
-  </div>
-
-  <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-
-</article>
+<div class="post-meta-bottom">
+          <span class="author-by">By</span>
+          <span class="author-name">Mas Sugeng</span>
+          <span class="post-meta-separator">•</span>
+          <span class="post-meta-date">{{ post.date | date: "%d %B %Y" }}</span>
+        </div>
+      </div>
+    </article>
 {% endfor %}
+  </div>
+</div>
