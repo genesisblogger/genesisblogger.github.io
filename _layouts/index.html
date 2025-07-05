@@ -41,3 +41,51 @@ layout: default
     {% endfor %}
   </div>
 
+
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+  <ul>
+    {% assign current = paginator.page %}
+    {% assign total = paginator.total_pages %}
+
+    {% if current > 1 %}
+      <li><a href="{{ paginator.previous_page_path }}">←</a></li>
+    {% endif %}
+
+    {% assign pages = "" | split: "" %}
+    {% assign range = 2 %}
+    
+    {% for i in (1..total) %}
+      {% if i == 1 or i == total or i == current or i == current-1 or i == current+1 %}
+        {% assign pages = pages | push: i %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign last = 0 %}
+    {% for page_num in pages %}
+      {% if page_num != last | plus:1 %}
+        <li><span class="ellipsis">…</span></li>
+      {% endif %}
+      
+      {% if page_num == current %}
+        <li><span class="current">{{ page_num }}</span></li>
+      {% else %}
+        {% if page_num == 1 %}
+          <li><a href="/">1</a></li>
+        {% else %}
+          <li><a href="/page/{{ page_num }}">{{ page_num }}</a></li>
+        {% endif %}
+      {% endif %}
+      
+      {% assign last = page_num %}
+    {% endfor %}
+
+    {% if current < total %}
+      <li><a href="{{ paginator.next_page_path }}">→</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+
