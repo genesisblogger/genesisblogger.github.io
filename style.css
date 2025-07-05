@@ -4,7 +4,7 @@ font-family:sans-serif;
 -webkit-text-size-adjust:100%;
 }
 body {
-  background: #0c121a;
+  background: #1c222a;
   color: #e1e7ec;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
@@ -15,9 +15,16 @@ border:none;
 max-width: 800px;
 width:100%;
 }
+a {
+text-decoration: none;
+color: #cc2040;
+}
+a:hover {
+text-decoration: none;
+color: #fff;
+}	
 
-#wrapper {
-max-width: 800px;
+#wrapper {max-width: 800px;
 margin: 0 auto;
 }
 /* HEADER */
@@ -82,7 +89,6 @@ margin: 0 auto;
   margin: 0 auto;
   padding: 40px 5%;
   max-width: 800px;
-  width: 100%;
 }
 
 .heading-section {
