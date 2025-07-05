@@ -2,9 +2,9 @@ html{
 font-family:sans-serif;
 -ms-text-size-adjust:100%;
 -webkit-text-size-adjust:100%;
-background: #0c121a;
 }
 body {
+  background: #0c121a;
   color: #e1e7ec;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
@@ -24,7 +24,7 @@ margin: 0 auto;
 
 .kepala {
             color: #ff5373;
-            padding: 10px;
+            padding: 10px 20px;
             text-align: left;
         }
 
@@ -80,8 +80,9 @@ margin: 0 auto;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 40px 5%;
   max-width: 800px;
+  width: 100%;
 }
 
 .heading-section {
