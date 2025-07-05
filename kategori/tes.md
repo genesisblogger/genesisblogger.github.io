@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tes
-category: Tes
+category: tes
 permalink: /kategori/tes/
 ---
 
