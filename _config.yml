@@ -31,7 +31,7 @@ github_username:  jekyll
 permalink: /:title/
 
 # Build settings
-theme: minima
+theme: null
 plugins:
   - jekyll-feed
 
