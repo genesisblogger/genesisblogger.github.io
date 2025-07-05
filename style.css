@@ -5,9 +5,10 @@ background-color: #1c222a;
   font-size: 16px;
   margin: 0 5%;
 }
-.img {
+img {
 border:none;
 max-width: 800px;
+width:100%;
 }
 
 #wrapper {
