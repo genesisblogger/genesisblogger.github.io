@@ -1,0 +1,44 @@
+<!-- File: _layouts/category.html -->
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+<div class="posts-wrapper">
+  {% assign posts = site.categories[page.category] %}
+  {% for post in posts %}
+    <article class="post-container">
+
+      {% assign img_src = post.content | split: '<img' | last | split: 'src="' | last | split: '"' | first %}
+      {% if img_src contains 'http' %}
+        <div class="post-thumbnail">
+          <a href="{{ post.url }}">
+            <img src="{{ img_src }}" alt="{{ post.title }}">
+          </a>
+        </div>
+      {% endif %}
+
+      <div class="post-meta-top">
+        <div class="post-meta-label">
+          {% for cat in post.categories %}
+            <span class="label-name">
+              <a href="/kategori/{{ cat | downcase }}/">{{ cat }}</a>
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+
+      <div class="post-meta-bottom">
+        <span class="author-by">By</span>
+        <span class="author-name">Mas Sugeng</span>
+        <span class="post-meta-separator">•</span>
+        <span class="post-meta-date">{{ post.date | date: "%d %B %Y" }}</span>
+      </div>
+
+    </article>
+  {% endfor %}
+</div>
