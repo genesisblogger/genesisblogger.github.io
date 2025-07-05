@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Tes
-category: Tes
+title: tes
+category: tes
 permalink: /kategori/tes/
 ---
