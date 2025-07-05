@@ -15,6 +15,10 @@ body {
 img {
 border:none;
 max-width: 480px;
+height: auto;
+}
+@media screen (max-width: 480px) {
+	img {width:100%;}
 }
 a {
 text-decoration: none;
@@ -93,7 +97,7 @@ margin: 0 auto;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
   margin: 0 auto;
-  padding: 40px 5%;
+  padding: 20px 5%;
   max-width: 800px;
 }
 
@@ -133,7 +137,7 @@ margin: 0 auto;
   aspect-ratio: 3 / 2;
   border-radius: 6px;
   /* margin-bottom: 2rem; */
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   overflow: hidden;
   position: relative;
 }
@@ -184,15 +188,14 @@ margin: 0 auto;
   font-size: calc(-12.12px + 1.5rem + 3.18vw);
   letter-spacing: -0.6px;
   line-height: 1.34;
-  /* margin: calc(-3.44px + 0.8rem + 1.42vw) 0; */
-  margin: 8px 0;
+  margin: calc(-3.44px + 0.8rem + 1.42vw) 0; 
 }
 
 .post-title a {
   color: #f8f9fa;
   text-decoration: none;
   transition: 0.2s ease-in-out;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .post-meta-bottom {
