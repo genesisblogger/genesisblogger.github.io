@@ -29,6 +29,9 @@ url: "https://genesisblogger.github.io" # the base hostname & protocol for your 
 twitter_username: jekyllrb
 github_username:  jekyll
 permalink: /:title/
+paginate: 12
+paginate_path: "/page/:num"
+
 
 # Build settings
 theme: null
