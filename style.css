@@ -1,5 +1,10 @@
+html{
+font-family:sans-serif;
+-ms-text-size-adjust:100%;
+-webkit-text-size-adjust:100%;
+background: #0c121a;
+}
 body {
-background-color: #000;
   color: #e1e7ec;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
