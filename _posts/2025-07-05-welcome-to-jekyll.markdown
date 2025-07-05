@@ -4,7 +4,7 @@ title:  "Welcome to Jekyll!"
 date:   2025-07-05 00:42:59 +0700
 categories: jekyll update
 ---
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAfN-q6CkEFQ6fIM8HBNPI57a8CVIHY6d8GvNOFCPnntcYsmo4-_V9p8VDXMJJodXgbXQXBGoqyp-oNUeVbDpA6S-y5XDc4wA7FTdSsaKH8k5b0EcGTPI_zgFJZvcJ17Lixb7b5mPwt5IDG5zHkNnM6u988zlw-UkRV4_XTQCjKr-ejvaN7aviGics29M/s1024/cerita-dewasa-mama-kandung.jpg/">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAfN-q6CkEFQ6fIM8HBNPI57a8CVIHY6d8GvNOFCPnntcYsmo4-_V9p8VDXMJJodXgbXQXBGoqyp-oNUeVbDpA6S-y5XDc4wA7FTdSsaKH8k5b0EcGTPI_zgFJZvcJ17Lixb7b5mPwt5IDG5zHkNnM6u988zlw-UkRV4_XTQCjKr-ejvaN7aviGics29M/s1024/cerita-dewasa-mama-kandung.jpg">
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
