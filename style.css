@@ -12,8 +12,7 @@ body {
 }
 img {
 border:none;
-max-width: 800px;
-width:100%;
+max-width: 480px;
 }
 a {
 text-decoration: none;
