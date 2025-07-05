@@ -1,0 +1,125 @@
+body {
+background-color: #1c222a;
+  color: #e1e7ec;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  margin: 0 5%;
+}
+
+#wrapper {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.blog-section {
+  background-color: #1c222a;
+  color: #e1e7ec;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  margin: 0 5%;
+}
+
+.heading-section {
+  font-size: 12.36px;
+  letter-spacing: -0.6px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.posting-title {
+  color: #e1e7ec;
+}
+
+.posts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px 4%;
+  justify-content: space-between;
+}
+
+.post-container {
+  box-sizing: border-box;
+}
+
+.post-thumbnail {
+  display: flex;
+  align-items: center;
+  aspect-ratio: 3 / 2;
+  border-radius: 6px;
+  /* margin-bottom: 2rem; */
+  margin-bottom: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 6px;
+  transition: background-color 150ms ease-in-out;
+}
+
+.post-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 12px;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.post-meta-label {
+  color: #657386;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 5px;
+}
+
+.label-name a {
+  color: #ff5373;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+
+.post-meta-comment {
+  text-align: right;
+}
+
+.comment-link {
+  color: #ff5373;
+  text-decoration: none;
+}
+
+.post-title {
+  color: #f8f9fa;
+  font-size: calc(-12.12px + 1.5rem + 3.18vw);
+  letter-spacing: -0.6px;
+  line-height: 1.34;
+  /* margin: calc(-3.44px + 0.8rem + 1.42vw) 0; */
+  margin: 8px 0;
+}
+
+.post-title a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  font-size: 16px;
+}
+
+.post-meta-bottom {
+  color: #b8c4cd;
+  font-size: 10.9px;
+  line-height: 1.2;
+}
+
+.author-name {
+  font-weight: bold;
+}
+
+.post-meta-separator {
+  color: #657386;
+}
