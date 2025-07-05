@@ -15,6 +15,60 @@ width:100%;
 max-width: 800px;
 margin: 0 auto;
 }
+/* HEADER */
+
+.kepala {
+            background-color: #fff;
+            color: #49ace1;
+            padding: 10px 20px;
+            text-align: left;
+        }
+
+        .kepala h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .judul-blog {
+     margin: 0;
+            font-size: 1.5em;
+}
+        .kepala p {
+            margin: 5px 0 0;
+            font-size: 0.8em;
+            color: #000;
+        }
+
+        /* Navigasi */
+        nav { background-color: #137faa; padding: 10px 0; overflow-x: auto; /* Memungkinkan scroll horizontal */ white-space: nowrap; /* Mencegah item melompat ke baris baru */ -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih mulus di iOS */ /* Tambahan untuk membuat sticky */ position: sticky; /* Membuat elemen "lengket" */ top: 0; /* Menempel di bagian atas viewport saat discroll */ z-index: 1000; /* Memastikan navigasi tetap di atas elemen lain */ width: 100%; /* Memastikan navigasi mengambil lebar penuh */ }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex; /* Mengatur item navigasi dalam satu baris */
+            justify-content: left; /* Pusatkan item navigasi */
+            max-width: 1200px; /* Batasi lebar navigasi */
+        }
+
+        nav ul li {
+            display: inline-block; /* Agar item tetap dalam satu baris */
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 5px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 0.8em;
+        }
+
+        nav ul li a:hover {
+            background-color: #197faf;
+        }
+
+/* POST */
+
 
 .blog-section {
   background-color: #1c222a;
