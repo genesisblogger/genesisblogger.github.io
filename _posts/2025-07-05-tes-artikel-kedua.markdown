@@ -2,7 +2,7 @@
 layout: post
 title:  "Tes Artikel Kedua"
 date:   2025-07-05
-categories: tes
+categories: [tes]
 ---
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAfN-q6CkEFQ6fIM8HBNPI57a8CVIHY6d8GvNOFCPnntcYsmo4-_V9p8VDXMJJodXgbXQXBGoqyp-oNUeVbDpA6S-y5XDc4wA7FTdSsaKH8k5b0EcGTPI_zgFJZvcJ17Lixb7b5mPwt5IDG5zHkNnM6u988zlw-UkRV4_XTQCjKr-ejvaN7aviGics29M/s1024/cerita-dewasa-mama-kandung.jpg">
 
