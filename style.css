@@ -123,3 +123,20 @@ margin: 0 auto;
 .post-meta-separator {
   color: #657386;
 }
+
+/* footer */
+.site-footer {
+	background-color: #000;
+	font-size: 16px;
+	line-height: 1;
+	padding: 40px 0;
+	text-align: center;
+}
+
+.site-footer p {
+	margin-bottom: 0;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
