@@ -14,12 +14,10 @@ body {
 }
 img {
 border:none;
-max-width: 480px;
+max-width: 100%;
 height: auto;
 }
-@media screen (max-width: 480px) {
-	img {width:100%;}
-}
+
 a {
 text-decoration: none;
 color: #cc2040;
