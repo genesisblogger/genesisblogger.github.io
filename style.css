@@ -38,7 +38,7 @@ margin: 0 auto;
         }
 
         /* Navigasi */
-        nav { background-color: #cc2040; /*#ff5373;*/padding: 30px 0; overflow-x: auto; /* Memungkinkan scroll horizontal */ white-space: nowrap; /* Mencegah item melompat ke baris baru */ -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih mulus di iOS */ /* Tambahan untuk membuat sticky */ position: sticky; /* Membuat elemen "lengket" */ top: 0; /* Menempel di bagian atas viewport saat discroll */ z-index: 1000; /* Memastikan navigasi tetap di atas elemen lain */ width: 100%; /* Memastikan navigasi mengambil lebar penuh */ }
+        nav {margin:20px 0; background-color: #cc2040; /*#ff5373;*/padding: 10px 0; overflow-x: auto; /* Memungkinkan scroll horizontal */ white-space: nowrap; /* Mencegah item melompat ke baris baru */ -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih mulus di iOS */ /* Tambahan untuk membuat sticky */ position: sticky; /* Membuat elemen "lengket" */ top: 0; /* Menempel di bagian atas viewport saat discroll */ z-index: 1000; /* Memastikan navigasi tetap di atas elemen lain */ width: 100%; /* Memastikan navigasi mengambil lebar penuh */ }
         nav ul {
             list-style: none;
             padding: 0;
