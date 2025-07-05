@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<article class="post">
+
+  <h1 class="post-title">{{ page.title }}</h1>
+
+  <div class="post-meta">
+    <span>{{ page.date | date: "%d %B %Y" }}</span>
+    {% for cat in page.categories %}
+      <a href="/kategori/{{ cat | downcase }}/" class="post-category">{{ cat }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
