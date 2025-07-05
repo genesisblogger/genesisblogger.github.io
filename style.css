@@ -18,8 +18,7 @@ margin: 0 auto;
 /* HEADER */
 
 .kepala {
-            background-color: #fff;
-            color: #49ace1;
+            color: #ff5373;
             padding: 10px 20px;
             text-align: left;
         }
@@ -35,11 +34,11 @@ margin: 0 auto;
         .kepala p {
             margin: 5px 0 0;
             font-size: 0.8em;
-            color: #000;
+            color: #fff;
         }
 
         /* Navigasi */
-        nav { background-color: #137faa; padding: 10px 0; overflow-x: auto; /* Memungkinkan scroll horizontal */ white-space: nowrap; /* Mencegah item melompat ke baris baru */ -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih mulus di iOS */ /* Tambahan untuk membuat sticky */ position: sticky; /* Membuat elemen "lengket" */ top: 0; /* Menempel di bagian atas viewport saat discroll */ z-index: 1000; /* Memastikan navigasi tetap di atas elemen lain */ width: 100%; /* Memastikan navigasi mengambil lebar penuh */ }
+        nav { background-color: #ff5373; padding: 10px 0; overflow-x: auto; /* Memungkinkan scroll horizontal */ white-space: nowrap; /* Mencegah item melompat ke baris baru */ -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih mulus di iOS */ /* Tambahan untuk membuat sticky */ position: sticky; /* Membuat elemen "lengket" */ top: 0; /* Menempel di bagian atas viewport saat discroll */ z-index: 1000; /* Memastikan navigasi tetap di atas elemen lain */ width: 100%; /* Memastikan navigasi mengambil lebar penuh */ }
         nav ul {
             list-style: none;
             padding: 0;
